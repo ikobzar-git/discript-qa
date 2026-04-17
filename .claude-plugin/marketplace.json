@@ -1,0 +1,26 @@
+{
+  "name": "discript-qa",
+  "owner": {
+    "name": "Discript",
+    "url": "https://github.com/ikobzar-git"
+  },
+  "metadata": {
+    "description": "Универсальный QA-плагин для Claude Code с 10 специализированными агентами тестирования"
+  },
+  "plugins": [
+    {
+      "name": "discript-qa",
+      "source": "./",
+      "description": "Полноценный процесс QA для веб-приложений, сервисов и API: функциональное, регрессионное, a11y, performance, security, edge-cases и интеграционное тестирование",
+      "author": {
+        "name": "Discript"
+      },
+      "homepage": "https://github.com/ikobzar-git/discript-qa",
+      "repository": "https://github.com/ikobzar-git/discript-qa",
+      "license": "MIT",
+      "keywords": ["qa", "testing", "agents", "e2e", "accessibility", "performance", "security"],
+      "category": "testing",
+      "tags": ["qa", "testing", "playwright", "axe", "lighthouse"]
+    }
+  ]
+}

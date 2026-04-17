@@ -1,0 +1,48 @@
+{
+  "$schema": "https://docs.claude.com/schemas/hooks.json",
+  "description": "Hooks плагина discript-qa. Автоматизируют рутинные действия QA-процесса.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "tool == \"Edit\" && tool_input.file_path matches \"\\\\.qa/bugs/.*\\\\.md$\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[discript-qa] Редактируется карточка бага. Убедись, что изменения соответствуют формату BUG_REPORT.md' >&2"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "tool == \"Write\" && tool_input.file_path matches \"\\\\.qa/bugs/.*\\\\.md$\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[discript-qa] ✅ Новая карточка бага создана. Не забудь обновить индекс в .qa/reports/ при формировании отчёта.' >&2"
+          }
+        ]
+      },
+      {
+        "matcher": "tool == \"Write\" && tool_input.file_path matches \"QA_BRIEF\\\\.md$\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[discript-qa] 📋 QA_BRIEF.md обновлён. Агенты будут использовать новую версию при следующем прогоне.' >&2"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f \"./QA_BRIEF.md\" ]; then echo '[discript-qa] 📋 Обнаружен QA_BRIEF.md в проекте. Используй /qa-plan для продолжения QA-аудита.' >&2; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
