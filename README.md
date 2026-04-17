@@ -17,36 +17,44 @@
 - **Выборочный запуск** — не прогоняет всех скопом, ты выбираешь нужных для конкретной задачи
 - **Встроенный workflow** — от начала аудита до исправлений и повторной проверки
 
-## Быстрый старт
+## Установка
 
-### 1. Установка как плагин (рекомендуется)
+### ⚡ Способ 1: одной командой (рекомендуется)
 
-В Claude Code:
+Скопируй и выполни в терминале:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ikobzar-git/discript-qa/main/install.sh | bash
+```
+
+Скрипт:
+1. Делает бэкап твоих настроек Claude Code
+2. Скачивает плагин
+3. Регистрирует его в `~/.claude/settings.json`
+
+После установки — закрой Cursor полностью (`Cmd+Q`) и открой заново.
+
+### 🔧 Способ 2: через команды Claude Code
+
+Если способ 1 не подходит, в Claude Code выполни:
 
 ```
 /plugin marketplace add ikobzar-git/discript-qa
 /plugin install discript-qa@discript-qa
 ```
 
-Или добавь в `~/.claude/settings.json`:
+Перезапусти Cursor (`Cmd+Q`).
 
-```json
-{
-  "extraKnownMarketplaces": {
-    "discript-qa": {
-      "source": {
-        "source": "github",
-        "repo": "ikobzar-git/discript-qa"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "discript-qa@discript-qa": true
-  }
-}
+### 🗑️ Удаление
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ikobzar-git/discript-qa/main/uninstall.sh | bash
 ```
 
-После установки перезапусти Claude Code.
+### 🔄 Обновление
+
+Если установлен через способ 1 — просто повтори команду установки.
+Если через /plugin install — обновится автоматически при старте Claude Code.
 
 ### 2. Первое использование
 
@@ -248,10 +256,18 @@ MIT — [LICENSE](LICENSE)
 
 ## Как делиться с командой
 
-1. Каждый член команды устанавливает плагин через `/plugin marketplace add ikobzar-git/discript-qa` — один раз.
-2. Плагин доступен во всех проектах автоматически.
-3. В каждом проекте, где нужен QA, выполняется `/qa-start` — заполняется свой `QA_BRIEF.md`.
-4. Обновления плагина приходят автоматически при релизах.
+Отправь в чат команде:
+
+> **Установка discript-qa:** выполни в терминале
+> ```bash
+> curl -fsSL https://raw.githubusercontent.com/ikobzar-git/discript-qa/main/install.sh | bash
+> ```
+> Потом закрой Cursor через `Cmd+Q`, открой заново, набери в Claude Code `/qa-help` — готово.
+
+После установки команда работает с плагином так:
+1. В каждом проекте, где нужен QA, один раз делают `/qa-start` — заполняют `QA_BRIEF.md`.
+2. Дальше — `/qa-plan standard` → `/qa-run` → `/qa-report` → `/qa-fix` → `/qa-retest`.
+3. Обновления плагина — повторный запуск `install.sh` или автоматически при рестарте Cursor.
 
 ---
 
