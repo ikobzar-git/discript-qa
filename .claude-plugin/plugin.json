@@ -5,24 +5,5 @@
   "author": {
     "name": "Discript",
     "url": "https://github.com/ikobzar-git"
-  },
-  "homepage": "https://github.com/ikobzar-git/discript-qa",
-  "repository": "https://github.com/ikobzar-git/discript-qa",
-  "license": "MIT",
-  "keywords": [
-    "claude-code",
-    "qa",
-    "testing",
-    "quality-assurance",
-    "e2e",
-    "accessibility",
-    "performance",
-    "security",
-    "regression",
-    "agents"
-  ],
-  "agents": "./agents",
-  "commands": "./commands",
-  "skills": "./skills",
-  "hooks": "./hooks/hooks.json"
+  }
 }
